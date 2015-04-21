@@ -124,41 +124,41 @@ public class Canvas {
 	     int[][] stack = new int[(maxX+1)*(maxY+1)][2];
 	     int index = 0;         
 
-	     stack[0][0] = x;
-	     stack[0][1] = y;
-	     canvas[x][y] = colour;
+	     stack[0][0] = y;
+	     stack[0][1] = x;
+	     canvas[y][x] = colour;
 
 	     while (index >= 0){
-	         x = stack[index][0];
-	         y = stack[index][1];
+	         y = stack[index][0];
+	         x = stack[index][1];
 	         index--;            
 
-	         if ((x > 0) && (canvas[x-1][y] == ' ')){
-	        	 canvas[x-1][y] = colour;
+	         if ((y > 0) && (canvas[y-1][x] == ' ')){
+	        	 canvas[y-1][x] = colour;
 	             index++;
-	             stack[index][0] = x-1;
-	             stack[index][1] = y;
+	             stack[index][0] = y-1;
+	             stack[index][1] = x;
 	         }
 
-	         if ((x < maxX) && (canvas[x+1][y] == ' ')){
-	        	 canvas[x+1][y] = colour;
+	         if ((y < maxX) && (canvas[y+1][x] == ' ')){
+	        	 canvas[y+1][x] = colour;
 	             index++;
-	             stack[index][0] = x+1;
-	             stack[index][1] = y;
+	             stack[index][0] = y+1;
+	             stack[index][1] = x;
 	         }
 
-	         if ((y > 0) && (canvas[x][y-1] == ' ')){
-	        	 canvas[x][y-1] = colour;
+	         if ((x > 0) && (canvas[y][x-1] == ' ')){
+	        	 canvas[y][x-1] = colour;
 	             index++;
-	             stack[index][0] = x;
-	             stack[index][1] = y-1;
+	             stack[index][0] = y;
+	             stack[index][1] = x-1;
 	         }                
 
-	         if ((y < maxY) && (canvas[x][y+1] == ' ')){
-	        	 canvas[x][y+1] = colour;
+	         if ((x < maxY) && (canvas[y][x+1] == ' ')){
+	        	 canvas[y][x+1] = colour;
 	             index++;
-	             stack[index][0] = x;
-	             stack[index][1] = y+1;
+	             stack[index][0] = y;
+	             stack[index][1] = x+1;
 	         }                          
 	     }
 	}
